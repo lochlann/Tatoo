@@ -1,0 +1,50 @@
+<div>Tatoo-list works!</div>
+
+<div class="container is-widescreen">
+  <button (click)="openAddTatoo()" *ngIf="!showTatooForm" class="centerThis notification is-primary">Add Tatoo</button>
+
+  <!-- <button (click)="openEditTatoo()" *ngIf="!showTatooForm" [disabled]="!currentTatoo"
+class="btn btn-lg btn-outline-primary" >Edit Tatoo</button> -->
+
+  <button (click)="openDeleteTatoo()" *ngIf="!showTatooForm" [disabled]="!currentTatoo"
+    class="notification is-danger">Delete Tatoo</button>
+
+</div>
+
+
+<app-form *ngIf="showTatooForm" (tatooFormClose)="tatooFormClose($event)" [tatoo]="currentTatoo"></app-form>
+
+<p>
+  <ngb-alert *ngIf="message" [dismissible]="true">
+    <strong>Warning!</strong> {{message}}
+  </ngb-alert>
+</p>
+<div class="columns">
+  <div class="column card is-one-third" *ngFor="let tat of tatooList">
+    <div class="card-image">
+      <figure class="image is-4by3">
+        <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <!-- <div class="media-left">
+        <figure class="image is-48x48">
+          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+        </figure>
+      </div> -->
+        <div class="media-content">
+          <p class="title is-4">{{tat.name}}</p>
+          <p class="subtitle is-6">@{{tat.name}}</p>
+        </div>
+      </div>
+
+      <div class="content">
+        {{tat.description}}
+        <a href="#">#css</a> <a href="#">#responsive</a>
+        <br>
+        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+      </div>
+    </div>
+  </div>
+</div>
